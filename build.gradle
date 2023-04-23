@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+}
+
+group 'pl.shadxw'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation(project('CloudApp-Driver'), project('CloudApp-API'), project('CloudApp-Core'), project('CloudApp-Master'))
+}
+
+subprojects {
+    apply plugin: 'java'
+    dependencies {
+        compileOnly('org.projectlombok:lombok:1.18.26')
+        annotationProcessor('org.projectlombok:lombok:1.18.26')
+        implementation ('org.jetbrains:annotations:24.0.0')
+        switch (project.name){
+            case 'CloudApp-Master':
+                implementation(project(':CloudApp-Driver'))
+            case 'CloudApp-Driver':
+                implementation(project(':CloudApp-API'))
+            case 'CloudApp-API':
+                implementation(project(':CloudApp-Core'))
+        }
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'pl.shadxw.driver.CloudAppDriver'
+        )
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
