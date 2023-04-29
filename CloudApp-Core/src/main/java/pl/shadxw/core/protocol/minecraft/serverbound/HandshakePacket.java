@@ -5,8 +5,6 @@ import pl.shadxw.core.models.Packet;
 
 public class HandshakePacket extends Packet {
 
-
-
     public HandshakePacket(ByteBuf byteBuf) {
         super(byteBuf);
     }
