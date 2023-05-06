@@ -2,10 +2,25 @@ package pl.shadxw.core.utils;
 
 import io.netty.buffer.ByteBuf;
 
+import java.nio.charset.StandardCharsets;
+
 public class ProtocolUtilities {
 
     private static final int SEGMENT_BITS = 0x7F;
     private static final int CONTINUE_BIT = 0x80;
+
+    public static String readUTF8(ByteBuf buf) {
+        final int len = readVarInt(buf);
+        final byte[] bytes = new byte[len];
+        buf.readBytes(bytes);
+        return new String(bytes, StandardCharsets.UTF_8);
+    }
+
+    public static void writeUTF8(ByteBuf buf, String value) {
+        final byte[] bytes = value.getBytes(StandardCharsets.UTF_8);
+        writeVarInt(buf, bytes.length);
+        buf.writeBytes(bytes);
+    }
 
     public static int readVarInt(ByteBuf buf) {
         int value = 0;

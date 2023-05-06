@@ -6,5 +6,9 @@ public interface IPacket {
 
     void decode();
 
+    boolean execute();
+
+    boolean respond();
+
 
 }
