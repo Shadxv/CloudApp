@@ -1,6 +1,6 @@
 package pl.shadxw.driver.console;
 
-import pl.shadxw.driver.utils.MessageType;
+import pl.shadxw.driver.util.MessageType;
 
 public interface IConsole extends AutoCloseable {
 

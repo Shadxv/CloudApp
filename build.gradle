@@ -23,9 +23,9 @@ subprojects {
         implementation ('org.jetbrains:annotations:24.0.0')
         implementation ('io.netty:netty-all:4.1.91.Final')
         switch (project.name){
-            case 'CloudApp-Master':
-                implementation(project(':CloudApp-Driver'))
             case 'CloudApp-Driver':
+                implementation(project(':CloudApp-Master'))
+            case 'CloudApp-Master':
                 implementation(project(':CloudApp-API'))
             case 'CloudApp-API':
                 implementation(project(':CloudApp-Core'))
@@ -38,6 +38,7 @@ test {
 }
 
 jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     manifest {
         attributes(
                 'Main-Class': 'pl.shadxw.driver.CloudAppDriver'

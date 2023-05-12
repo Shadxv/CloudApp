@@ -9,9 +9,10 @@ import org.jline.reader.LineReaderBuilder;
 import org.jline.terminal.Terminal;
 import org.jline.terminal.TerminalBuilder;
 import org.jline.utils.InfoCmp;
-import pl.shadxw.driver.utils.ConsoleColor;
+import pl.shadxw.driver.CloudAppDriver;
+import pl.shadxw.driver.util.ConsoleColor;
 import pl.shadxw.driver.models.Sender;
-import pl.shadxw.driver.utils.MessageType;
+import pl.shadxw.driver.util.MessageType;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -125,6 +126,7 @@ public class Console extends Sender implements IConsole {
     @Override
     public void close() throws Exception {
         this.setRunning(false);
+        CloudAppDriver.getDriver().getMinecraftServer().stop();
         this.terminal.close();
         AnsiConsole.systemUninstall();
     }

@@ -5,14 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="196f6ef4-9aed-487a-9404-231f81257f2e" name="Changes" comment="Added models of server and packet">
+      <change afterPath="$PROJECT_DIR$/CloudApp-Master/src/main/java/pl/shadxw/master/exceptions/IncorrectValueException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CloudApp-Master/src/main/java/pl/shadxw/master/network/NetworkManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_04_2023_21_07_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_04_2023_21_07__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/CloudAppCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/CloudAppCore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/models/IPacket.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/models/IPacket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/models/IServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/models/IServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/models/Packet.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/protocol/Packet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/network/NettyServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/network/NettyServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/protocol/minecraft/serverbound/HandshakePacket.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/protocol/minecraft/serverbound/HandshakePacket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/utils/ProtocolUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/utils/ProtocolUtilities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/CloudAppCore.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/exceptions/IncorrectMethodUsageException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/managers/MinecraftClientManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/models/IPacket.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/models/IServer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/network/NettyClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/network/NettyServer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/protocol/NettyPacketHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/protocol/Packet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/protocol/minecraft/MinecraftClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/protocol/minecraft/MinecraftClientState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/protocol/minecraft/serverbound/HandshakePacket.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/utils/ProtocolUtilities.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/CloudAppDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/CloudAppDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/Console.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/Console.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/ConsoleReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/ConsoleReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/IConsole.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/IConsole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/commands/PongCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/commands/PongCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/utils/ConsoleColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/util/ConsoleColor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/utils/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/util/MessageType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,8 +76,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="AnnotationType" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -83,25 +102,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "jdk.selected.JAVA_MODULE": "15",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.sourceCode.Java",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;15&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/BuildTools/work/decompile-8b4db36a/net&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Shadow\Desktop\SGCraft\CloudApp\Temp" />
+    </key>
+  </component>
   <component name="RunManager" selected="Gradle.CloudApp [jar]">
     <configuration name="CloudApp [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -181,7 +206,16 @@
       <workItem from="1682344785930" duration="5549000" />
       <workItem from="1682771131488" duration="4285000" />
       <workItem from="1682974989152" duration="1738000" />
-      <workItem from="1683374826841" duration="3988000" />
+      <workItem from="1683374826841" duration="4306000" />
+      <workItem from="1683399107422" duration="9768000" />
+      <workItem from="1683411686991" duration="3063000" />
+      <workItem from="1683448989438" duration="2494000" />
+      <workItem from="1683451940745" duration="4139000" />
+      <workItem from="1683479801842" duration="1001000" />
+      <workItem from="1683570366176" duration="660000" />
+      <workItem from="1683745438193" duration="2440000" />
+      <workItem from="1683811738717" duration="7070000" />
+      <workItem from="1683893050677" duration="22011000" />
     </task>
     <task id="LOCAL-00001" summary="Jline3 input and output">
       <created>1682270577336</created>

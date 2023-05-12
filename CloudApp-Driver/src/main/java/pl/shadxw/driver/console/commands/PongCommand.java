@@ -3,7 +3,7 @@ package pl.shadxw.driver.console.commands;
 import pl.shadxw.driver.console.Console;
 import pl.shadxw.driver.managers.CommandManager;
 import pl.shadxw.driver.models.Command;
-import pl.shadxw.driver.utils.MessageType;
+import pl.shadxw.driver.util.MessageType;
 
 public class PongCommand extends Command {
 
