@@ -1,30 +1,34 @@
 package pl.shadxw.driver;
 
 import lombok.Getter;
-import pl.shadxw.core.server.Server;
+import pl.shadxw.core.console.IConsole;
+import pl.shadxw.core.models.ConsoleApp;
 import pl.shadxw.driver.console.Console;
-import pl.shadxw.driver.console.IConsole;
-import pl.shadxw.master.server.MinecraftServer;
+import pl.shadxw.master.CloudAppMaster;
 
-public class CloudAppDriver {
+public class CloudAppDriver extends ConsoleApp {
 
 
-    @Getter private static CloudAppDriver driver;
+    @Getter private static ConsoleApp app;
 
     public static void main(String[] args){
         try{
-            driver = new CloudAppDriver();
+            app = new CloudAppMaster(new Console());
         } catch (Exception e){
             e.printStackTrace();
         }
     }
 
-    @Getter private IConsole console;
-    @Getter private Server minecraftServer;
-
     public CloudAppDriver() throws Exception {
-        this.console = new Console();
-        (this.minecraftServer = new MinecraftServer(25565, "localhost")).run();
+        super(new Console());
     }
 
+    public CloudAppDriver(IConsole console){
+        super(console);
+    }
+
+    @Override
+    public void shutdown() throws Exception {
+        CloudAppDriver.getApp().getConsole().close();
+    }
 }

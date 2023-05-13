@@ -6,7 +6,7 @@ import org.jline.reader.EndOfFileException;
 import org.jline.reader.UserInterruptException;
 import pl.shadxw.driver.exceptions.CommandNotFoundException;
 import pl.shadxw.driver.managers.CommandManager;
-import pl.shadxw.driver.util.MessageType;
+import pl.shadxw.core.console.MessageType;
 
 import java.util.Arrays;
 

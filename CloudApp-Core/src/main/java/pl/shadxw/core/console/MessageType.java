@@ -1,4 +1,4 @@
-package pl.shadxw.driver.util;
+package pl.shadxw.core.console;
 
 import lombok.Getter;
 

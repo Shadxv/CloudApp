@@ -9,23 +9,36 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.timeout.ReadTimeoutHandler;
+import lombok.Getter;
 import pl.shadxw.api.protocol.PacketEncoder;
+import pl.shadxw.core.console.IConsole;
+import pl.shadxw.core.console.MessageType;
+import pl.shadxw.master.CloudAppMaster;
 import pl.shadxw.master.network.NetworkManager;
 import pl.shadxw.core.server.Server;
 import pl.shadxw.master.protocol.MasterPacketDecoder;
 import pl.shadxw.master.server.listeners.HandshakeListener;
 
-public class MinecraftServer extends Server {
+public class MinecraftServer extends Server implements Runnable{
 
+    private EventLoopGroup bossGroup;
+    private EventLoopGroup workerGroup;
+    private ChannelFuture channelFuture;
 
-    public MinecraftServer(int port, String address) {
+    @Getter private final Thread thread;
+    @Getter private final IConsole console;
+
+    public MinecraftServer(int port, String address, IConsole console) {
         super(port, address);
+        this.console = console;
+        this.thread = new Thread(this);
+        this.thread.start();
     }
 
     @Override
-    public void run() throws Exception{
-        EventLoopGroup bossGroup = new NioEventLoopGroup();
-        EventLoopGroup workerGroup = new NioEventLoopGroup();
+    public void runServer() throws Exception{
+        this.bossGroup = new NioEventLoopGroup();
+        this.workerGroup = new NioEventLoopGroup();
         try {
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup)
@@ -45,17 +58,30 @@ public class MinecraftServer extends Server {
                     .option(ChannelOption.SO_BACKLOG, 128)
                     .childOption(ChannelOption.SO_KEEPALIVE, true);
 
-            ChannelFuture f = b.bind(super.getPort()).sync();
+            this.channelFuture = b.bind(super.getPort()).sync();
 
-            f.channel().closeFuture().sync();
+            this.channelFuture.channel().closeFuture().sync();
         } finally {
-            workerGroup.shutdownGracefully();
-            bossGroup.shutdownGracefully();
+            this.workerGroup.shutdownGracefully();
+            this.bossGroup.shutdownGracefully();
         }
     }
 
-    @Override
-    public void stop() {
 
+
+    @Override
+    public void stop() throws InterruptedException {
+        this.workerGroup.shutdownGracefully().sync();
+        this.bossGroup.shutdownGracefully().sync();
+        this.channelFuture.channel().closeFuture().sync();
+    }
+
+    @Override
+    public void run() {
+        try {
+            this.runServer();
+        } catch (Exception e) {
+            console.writeLine(e.getMessage(), MessageType.ERROR);
+        }
     }
 }

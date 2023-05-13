@@ -12,7 +12,7 @@ public abstract class Server {
         this.address = address;
     }
 
-    public abstract void run() throws Exception;
+    public abstract void runServer() throws Exception;
 
     public abstract void stop() throws Exception;
 

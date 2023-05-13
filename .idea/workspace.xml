@@ -5,32 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="196f6ef4-9aed-487a-9404-231f81257f2e" name="Changes" comment="Added models of server and packet">
-      <change afterPath="$PROJECT_DIR$/CloudApp-Master/src/main/java/pl/shadxw/master/exceptions/IncorrectValueException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CloudApp-Master/src/main/java/pl/shadxw/master/network/NetworkManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_04_2023_21_07_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_04_2023_21_07__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/CloudAppCore.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/exceptions/IncorrectMethodUsageException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/managers/MinecraftClientManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/models/IPacket.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/models/IServer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/network/NettyClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/network/NettyServer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/protocol/NettyPacketHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/protocol/Packet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/protocol/minecraft/MinecraftClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/protocol/minecraft/MinecraftClientState.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/protocol/minecraft/serverbound/HandshakePacket.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/utils/ProtocolUtilities.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/server/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/CloudAppDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/CloudAppDriver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/Console.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/Console.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/ConsoleReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/ConsoleReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/IConsole.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/IConsole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/IConsole.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/console/IConsole.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/commands/PongCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/commands/PongCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/utils/ConsoleColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/util/ConsoleColor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/utils/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/util/MessageType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/commands/StopCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/commands/StopCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/util/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/console/MessageType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Master/src/main/java/pl/shadxw/master/CloudAppMaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Master/src/main/java/pl/shadxw/master/CloudAppMaster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Master/src/main/java/pl/shadxw/master/server/MinecraftServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Master/src/main/java/pl/shadxw/master/server/MinecraftServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,8 +63,8 @@
       <list>
         <option value="Enum" />
         <option value="AnnotationType" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -216,6 +201,7 @@
       <workItem from="1683745438193" duration="2440000" />
       <workItem from="1683811738717" duration="7070000" />
       <workItem from="1683893050677" duration="22011000" />
+      <workItem from="1683973170530" duration="5349000" />
     </task>
     <task id="LOCAL-00001" summary="Jline3 input and output">
       <created>1682270577336</created>
