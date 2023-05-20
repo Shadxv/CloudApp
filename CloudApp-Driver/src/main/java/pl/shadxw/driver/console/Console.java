@@ -27,7 +27,7 @@ public class Console extends Sender implements IConsole {
     @Getter private final LineReader lineReader;
     @Getter @Setter private boolean isRunning;
 
-    private final ConsoleReader consoleReader;
+    @Getter private final ConsoleReader consoleReader;
     private final SimpleDateFormat timeFormater;
 
     public Console() throws IOException {
@@ -44,7 +44,7 @@ public class Console extends Sender implements IConsole {
         this.lineReader = LineReaderBuilder.builder()
                 .terminal(this.terminal)
                 .build();
-        (this.consoleReader = new ConsoleReader(this)).start();
+        this.consoleReader = new ConsoleReader(this);
 
     }
 

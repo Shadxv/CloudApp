@@ -1,6 +1,10 @@
 package pl.shadxw.core.console;
 
+import java.util.Scanner;
+
 public interface IConsole extends AutoCloseable {
+
+    Scanner scanner = new Scanner(System.in);
 
     void writeRaw(String rawText);
 
@@ -17,4 +21,8 @@ public interface IConsole extends AutoCloseable {
     String getName();
 
     String formatMsg(String text, MessageType type);
+
+    default Scanner getScanner(){
+        return scanner;
+    }
 }

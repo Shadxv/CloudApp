@@ -6,16 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="196f6ef4-9aed-487a-9404-231f81257f2e" name="Changes" comment="Added models of server and packet">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/server/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/console/IConsole.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/console/IConsole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/models/ConsoleApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/models/ConsoleApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/CloudAppDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/CloudAppDriver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/Console.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/Console.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/ConsoleReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/ConsoleReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/IConsole.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/console/IConsole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/commands/PongCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/commands/PongCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/commands/StopCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/commands/StopCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/util/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/console/MessageType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CloudApp-Master/src/main/java/pl/shadxw/master/CloudAppMaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Master/src/main/java/pl/shadxw/master/CloudAppMaster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Master/src/main/java/pl/shadxw/master/server/MinecraftServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Master/src/main/java/pl/shadxw/master/server/MinecraftServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,10 +57,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="AnnotationType" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -202,6 +198,9 @@
       <workItem from="1683811738717" duration="7070000" />
       <workItem from="1683893050677" duration="22011000" />
       <workItem from="1683973170530" duration="5349000" />
+      <workItem from="1684054885089" duration="711000" />
+      <workItem from="1684343036400" duration="2411000" />
+      <workItem from="1684589391855" duration="10275000" />
     </task>
     <task id="LOCAL-00001" summary="Jline3 input and output">
       <created>1682270577336</created>

@@ -16,6 +16,11 @@ public class CloudAppMaster extends ConsoleApp {
     }
 
     @Override
+    public void init() {
+
+    }
+
+    @Override
     public void shutdown() throws Exception {
         this.minecraftServer.stop();
         super.getConsole().close();

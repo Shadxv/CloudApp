@@ -11,6 +11,8 @@ public abstract class ConsoleApp {
         this.console = console;
     }
 
+    public abstract void init() ;
+
     public abstract void shutdown() throws Exception;
 
 }
