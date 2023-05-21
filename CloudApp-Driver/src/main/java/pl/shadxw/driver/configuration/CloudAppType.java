@@ -5,7 +5,7 @@ import lombok.Getter;
 public enum CloudAppType {
 
     DRIVER("driver"),
-    MASTER("master"),
+    MASTER("pl/shadxw/master"),
     UNKNOWN("unknown");
 
     @Getter private final String value;

@@ -1,15 +1,11 @@
 package pl.shadxw.driver.managers;
 
-import lombok.Getter;
 import lombok.SneakyThrows;
 import pl.shadxw.core.console.MessageType;
 import pl.shadxw.core.models.ConfigFile;
 import pl.shadxw.driver.CloudAppDriver;
-import pl.shadxw.driver.console.Console;
 
 import java.io.*;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.Properties;
 
 public class ConfigManager extends ConfigFile {
@@ -39,7 +35,7 @@ public class ConfigManager extends ConfigFile {
         File configFolder = new File(super.getPath());
         if(!configFolder.isDirectory()) configFolder.mkdir();
         try {
-            InputStream templateStream = this.getClass().getClassLoader().getResourceAsStream(CONFIG_FILE_NAME);
+            InputStream templateStream = this.getClass().getClassLoader().getResourceAsStream("template_" + CONFIG_FILE_NAME);
             File config = new File(this.finalPath);
             config.createNewFile();
             FileOutputStream configStream = new FileOutputStream(config);

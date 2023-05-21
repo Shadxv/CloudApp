@@ -7,7 +7,7 @@ public enum MessageType {
     NORMAL("Normal", "&r"),
     ERROR("Error", "&4"),
     WARNING("Warning", "&e"),
-    SUGGESTION("Suggestion", "&a");
+    SUGGESTION("Suggestion", "&b");
 
     @Getter private final String name;
     @Getter private final String color;

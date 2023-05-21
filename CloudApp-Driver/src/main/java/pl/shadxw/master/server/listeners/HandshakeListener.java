@@ -1,10 +1,10 @@
 package pl.shadxw.master.server.listeners;
 
 import lombok.Getter;
+import pl.shadxw.master.protocol.handshake.PacketHandshakeInListener;
 import pl.shadxw.master.exceptions.IncorrectValueException;
 import pl.shadxw.master.network.NetworkManager;
 import pl.shadxw.master.protocol.handshake.PacketHandshakeIn;
-import pl.shadxw.master.protocol.handshake.PacketHandshakeInListener;
 
 public class HandshakeListener implements PacketHandshakeInListener {
 

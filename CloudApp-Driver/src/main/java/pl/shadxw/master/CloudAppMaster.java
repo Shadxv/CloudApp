@@ -1,10 +1,9 @@
 package pl.shadxw.master;
 
 import lombok.Getter;
-import lombok.Setter;
+import pl.shadxw.master.server.MinecraftServer;
 import pl.shadxw.core.console.IConsole;
 import pl.shadxw.core.models.ConsoleApp;
-import pl.shadxw.master.server.MinecraftServer;
 
 public class CloudAppMaster extends ConsoleApp {
 
@@ -24,6 +23,7 @@ public class CloudAppMaster extends ConsoleApp {
     public void shutdown() throws Exception {
         this.minecraftServer.stop();
         super.getConsole().close();
+        System.exit(0);
     }
 
 }

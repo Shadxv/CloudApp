@@ -10,14 +10,13 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import lombok.Getter;
+import pl.shadxw.master.protocol.MasterPacketDecoder;
+import pl.shadxw.master.server.listeners.HandshakeListener;
 import pl.shadxw.api.protocol.PacketEncoder;
 import pl.shadxw.core.console.IConsole;
 import pl.shadxw.core.console.MessageType;
-import pl.shadxw.master.CloudAppMaster;
 import pl.shadxw.master.network.NetworkManager;
 import pl.shadxw.core.server.Server;
-import pl.shadxw.master.protocol.MasterPacketDecoder;
-import pl.shadxw.master.server.listeners.HandshakeListener;
 
 public class MinecraftServer extends Server implements Runnable{
 

@@ -1,6 +1,5 @@
 rootProject.name = 'CloudApp'
 include 'CloudApp-API'
 include 'CloudApp-Core'
-include 'CloudApp-Master'
 include 'CloudApp-Driver'
 

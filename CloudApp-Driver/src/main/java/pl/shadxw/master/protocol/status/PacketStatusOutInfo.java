@@ -1,8 +1,5 @@
 package pl.shadxw.master.protocol.status;
 
-import io.netty.buffer.Unpooled;
-import lombok.Getter;
-import pl.shadxw.api.util.PacketDataManager;
 import pl.shadxw.core.protocol.Packet;
 import pl.shadxw.core.protocol.PacketValue;
 

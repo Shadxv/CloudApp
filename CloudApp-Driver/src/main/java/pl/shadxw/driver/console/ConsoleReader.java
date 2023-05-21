@@ -8,7 +8,9 @@ import pl.shadxw.driver.exceptions.CommandNotFoundException;
 import pl.shadxw.driver.managers.CommandManager;
 import pl.shadxw.core.console.MessageType;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class ConsoleReader extends Thread {
 
@@ -43,9 +45,12 @@ public class ConsoleReader extends Thread {
                 if (line == null) continue;
                 this.setWaitingForCommand(false);
                 if (line.isEmpty()) continue;
-                String[] elements = line.split(" ");
-                String command = elements[0];
-                String[] args = elements.length == 1 ? null : Arrays.copyOfRange(elements, 1, elements.length-1);
+                line = line.trim();
+                List<String> elements = new ArrayList<>(Arrays.asList(line.split(" ")));
+                elements.removeAll(Arrays.asList("", " ", null));
+                String command = elements.get(0);
+                elements.remove(0);
+                //At this point elements contains only arguments!!!
                 try{
                     commandManager.getCommand(command).execute(this.getConsole());
                 } catch (CommandNotFoundException e){

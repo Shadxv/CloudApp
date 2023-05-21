@@ -12,7 +12,6 @@
             <option value="$PROJECT_DIR$/CloudApp-API" />
             <option value="$PROJECT_DIR$/CloudApp-Core" />
             <option value="$PROJECT_DIR$/CloudApp-Driver" />
-            <option value="$PROJECT_DIR$/CloudApp-Master" />
           </set>
         </option>
       </GradleProjectSettings>
