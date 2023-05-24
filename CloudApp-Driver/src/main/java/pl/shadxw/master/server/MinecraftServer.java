@@ -10,13 +10,13 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import lombok.Getter;
-import pl.shadxw.master.protocol.MasterPacketDecoder;
-import pl.shadxw.master.server.listeners.HandshakeListener;
 import pl.shadxw.api.protocol.PacketEncoder;
 import pl.shadxw.core.console.IConsole;
 import pl.shadxw.core.console.MessageType;
-import pl.shadxw.master.network.NetworkManager;
 import pl.shadxw.core.server.Server;
+import pl.shadxw.master.network.NetworkManager;
+import pl.shadxw.master.protocol.MasterPacketDecoder;
+import pl.shadxw.master.server.listeners.HandshakeListener;
 
 public class MinecraftServer extends Server implements Runnable{
 
@@ -31,11 +31,11 @@ public class MinecraftServer extends Server implements Runnable{
         super(port, address);
         this.console = console;
         this.thread = new Thread(this);
-        this.thread.start();
     }
 
     @Override
     public void runServer() throws Exception{
+        this.console.writeLine("Running Minecraft Server on " + this.getAddress() + ":" + this.getPort(), MessageType.NORMAL);
         this.bossGroup = new NioEventLoopGroup();
         this.workerGroup = new NioEventLoopGroup();
         try {
@@ -58,7 +58,7 @@ public class MinecraftServer extends Server implements Runnable{
                     .childOption(ChannelOption.SO_KEEPALIVE, true);
 
             this.channelFuture = b.bind(super.getPort()).sync();
-
+            this.console.writeLine("Minecraft Server has been started properly!", MessageType.NORMAL);
             this.channelFuture.channel().closeFuture().sync();
         } finally {
             this.workerGroup.shutdownGracefully();
@@ -70,9 +70,11 @@ public class MinecraftServer extends Server implements Runnable{
 
     @Override
     public void stop() throws InterruptedException {
+        this.console.writeLine("Stopping Minecraft Server...", MessageType.NORMAL);
         this.workerGroup.shutdownGracefully().sync();
         this.bossGroup.shutdownGracefully().sync();
         this.channelFuture.channel().closeFuture().sync();
+        this.console.writeLine("Minecraft Server has been stopped correctly!", MessageType.NORMAL);
     }
 
     @Override
@@ -80,7 +82,7 @@ public class MinecraftServer extends Server implements Runnable{
         try {
             this.runServer();
         } catch (Exception e) {
-            console.writeLine(e.getMessage(), MessageType.ERROR);
+            this.console.writeLine(e.getMessage(), MessageType.ERROR);
         }
     }
 }

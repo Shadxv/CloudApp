@@ -14,7 +14,7 @@ public class StopCommand extends Command {
     @Override
     public boolean execute(Console console) {
         try {
-            CloudAppDriver.getApp().shutdown();
+            CloudAppDriver.getApp().shutdown(false, true);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -13,6 +13,8 @@ public abstract class ConsoleApp {
 
     public abstract void init() ;
 
-    public abstract void shutdown() throws Exception;
+    public abstract void shutdown(boolean force, boolean closeConsole) throws Exception;
+
+    public abstract String getAppName();
 
 }

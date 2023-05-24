@@ -5,32 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="196f6ef4-9aed-487a-9404-231f81257f2e" name="Changes" comment="Added models of server and packet">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/console/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/console/MessageType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/models/ConsoleApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Core/src/main/java/pl/shadxw/core/models/ConsoleApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/CloudAppDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/CloudAppDriver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/configuration/CloudAppType.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/configuration/CloudAppType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/ConsoleReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/ConsoleReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/commands/StopCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/console/commands/StopCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/managers/ConfigManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/driver/managers/ConfigManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/resources/template_config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Master/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Master/src/main/java/pl/shadxw/master/CloudAppMaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/master/CloudAppMaster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Master/src/main/java/pl/shadxw/master/exceptions/IncorrectValueException.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/master/exceptions/IncorrectValueException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Master/src/main/java/pl/shadxw/master/network/NetworkManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/master/network/NetworkManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Master/src/main/java/pl/shadxw/master/protocol/MasterPacketDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/master/protocol/MasterPacketDecoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Master/src/main/java/pl/shadxw/master/protocol/handshake/PacketHandshakeIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/master/protocol/handshake/PacketHandshakeIn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Master/src/main/java/pl/shadxw/master/protocol/handshake/PacketHandshakeInListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/master/protocol/handshake/PacketHandshakeInListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Master/src/main/java/pl/shadxw/master/protocol/status/PacketStatusInInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/master/protocol/status/PacketStatusInInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Master/src/main/java/pl/shadxw/master/protocol/status/PacketStatusInListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/master/protocol/status/PacketStatusInListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Master/src/main/java/pl/shadxw/master/protocol/status/PacketStatusInPing.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/master/protocol/status/PacketStatusInPing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Master/src/main/java/pl/shadxw/master/protocol/status/PacketStatusOutInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/master/protocol/status/PacketStatusOutInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Master/src/main/java/pl/shadxw/master/protocol/status/PacketStatusOutListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/master/protocol/status/PacketStatusOutListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Master/src/main/java/pl/shadxw/master/protocol/status/PacketStatusOutPong.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/master/protocol/status/PacketStatusOutPong.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Master/src/main/java/pl/shadxw/master/server/JSONPingResponseBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/master/server/JSONPingResponseBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Master/src/main/java/pl/shadxw/master/server/MinecraftServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/master/server/MinecraftServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Master/src/main/java/pl/shadxw/master/server/listeners/HandshakeListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/master/server/listeners/HandshakeListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudApp-Master/src/main/java/pl/shadxw/master/server/listeners/StatusListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/master/server/listeners/StatusListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/master/CloudAppMaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/master/CloudAppMaster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/master/exceptions/IncorrectValueException.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/master/exceptions/IncorrectValueException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/master/network/NetworkManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/master/network/NetworkManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/master/server/MinecraftServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/CloudApp-Driver/src/main/java/pl/shadxw/master/server/MinecraftServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,6 +213,8 @@
       <workItem from="1684617907126" duration="1153000" />
       <workItem from="1684619248569" duration="13000" />
       <workItem from="1684664092190" duration="3696000" />
+      <workItem from="1684762170682" duration="1312000" />
+      <workItem from="1684936372142" duration="5406000" />
     </task>
     <task id="LOCAL-00001" summary="Jline3 input and output">
       <created>1682270577336</created>

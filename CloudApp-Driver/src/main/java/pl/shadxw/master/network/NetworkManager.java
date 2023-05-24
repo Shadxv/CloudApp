@@ -5,8 +5,10 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.Getter;
 import lombok.Setter;
+import pl.shadxw.core.console.MessageType;
 import pl.shadxw.core.network.PacketListener;
 import pl.shadxw.core.protocol.Packet;
+import pl.shadxw.driver.CloudAppDriver;
 
 public class NetworkManager extends SimpleChannelInboundHandler<Packet<?>> {
 
@@ -30,7 +32,7 @@ public class NetworkManager extends SimpleChannelInboundHandler<Packet<?>> {
             try{
                 handlePacket(msg, this.packetListener);
             } catch (Exception e){
-                //CloudAppDriver.getDriver().getConsole().writeLine(e.getMessage(), MessageType.ERROR);
+                CloudAppDriver.getApp().getConsole().writeLine(e.getMessage(), MessageType.ERROR);
                 System.out.println(e.getMessage());
             }
         }
@@ -38,7 +40,7 @@ public class NetworkManager extends SimpleChannelInboundHandler<Packet<?>> {
 
     @Override
     public void exceptionCaught(ChannelHandlerContext channelhandlercontext, Throwable throwable) {
-        System.out.println(throwable.getMessage());
+        CloudAppDriver.getApp().getConsole().writeLine(throwable.getMessage(), MessageType.ERROR);
     }
 
     public void sendPacket(Packet<?> packet) {

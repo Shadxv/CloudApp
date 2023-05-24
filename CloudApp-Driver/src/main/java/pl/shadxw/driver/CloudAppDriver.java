@@ -6,6 +6,8 @@ import pl.shadxw.core.console.MessageType;
 import pl.shadxw.core.models.ConsoleApp;
 import pl.shadxw.driver.configuration.DriverConfiguration;
 import pl.shadxw.driver.console.Console;
+import pl.shadxw.driver.models.Sender;
+import pl.shadxw.master.CloudAppMaster;
 
 public class CloudAppDriver extends ConsoleApp {
 
@@ -15,12 +17,13 @@ public class CloudAppDriver extends ConsoleApp {
     public static void setApp(ConsoleApp newApp){
         if(app != null) {
             try {
-                app.shutdown();
+                app.shutdown(false, false);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         }
         app = newApp;
+        ((Sender)app.getConsole()).setName(app.getAppName());
     }
 
     public static void main(String[] args){
@@ -44,18 +47,44 @@ public class CloudAppDriver extends ConsoleApp {
 
     @Override
     public void init() {
-        super.getConsole().writeLine("Starting CloudApp Driver! It may take a few minutes...", MessageType.NORMAL);
+        super.getConsole().writeLine("Starting CloudApp Driver! It may take a few seconds...", MessageType.NORMAL);
         this.driverConfiguration = new DriverConfiguration();
         this.driverConfiguration.loadConfig();
-        super.getConsole().writeLine("Type: " + this.driverConfiguration.getType().getValue(), MessageType.SUGGESTION);
 
-        ((Console) super.getConsole()).getConsoleReader().start();
+        try{
+            switch (this.driverConfiguration.getType()){
+                case MASTER -> {
+                    this.getConsole().writeLine("Detected that this CloudApp is configured as Master. Changing type...", MessageType.NORMAL);
+                    setApp(new CloudAppMaster(super.getConsole()));
+                    app.init();
+                }
+                case DRIVER -> {
+                    //Start Configuration
+                }
+                case UNKNOWN -> {
+                    //ERROR, Unknown type
+                }
+                default -> {
+                    //ERROR, Config has been loaded incorrectly
+                }
+            }
+        } finally {
+            ((Console) app.getConsole()).getConsoleReader().start();
+        }
     }
 
     @Override
-    public void shutdown() throws Exception {
+    public void shutdown(boolean force, boolean closeConsole) throws Exception {
         CloudAppDriver.getApp().getConsole().writeLine("Shutting down CloudApp Driver...", MessageType.NORMAL);
-        CloudAppDriver.getApp().getConsole().close();
-        System.exit(0);
+        if(force) System.exit(0);
+
+        if(closeConsole) {
+            CloudAppDriver.getApp().getConsole().close();
+        }
+    }
+
+    @Override
+    public String getAppName(){
+        return "CloudApp-Driver";
     }
 }

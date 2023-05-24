@@ -47,10 +47,10 @@ public class ConfigManager extends ConfigFile {
             this.loadPropertiesFile();
         } catch (FileNotFoundException e) {
             CloudAppDriver.getApp().getConsole().writeLine("CloudApp could not find '" + CONFIG_FILE_NAME + "' template in resources!", MessageType.ERROR);
-            CloudAppDriver.getApp().shutdown();
+            CloudAppDriver.getApp().shutdown(true, true);
         } catch (IOException e) {
             CloudAppDriver.getApp().getConsole().writeLine("CloudApp could not create or read '" + CONFIG_FILE_NAME + "' !", MessageType.ERROR);
-            CloudAppDriver.getApp().shutdown();
+            CloudAppDriver.getApp().shutdown(true, true);
         }
 
     }
@@ -68,7 +68,7 @@ public class ConfigManager extends ConfigFile {
                 && !input.equalsIgnoreCase("n"));
         if(input.equalsIgnoreCase("n")){
             CloudAppDriver.getApp().getConsole().writeLine("Could not create configuration files...", MessageType.WARNING);
-            CloudAppDriver.getApp().shutdown();
+            CloudAppDriver.getApp().shutdown(true, true);
         } else {
             this.forceCreate();
         }
