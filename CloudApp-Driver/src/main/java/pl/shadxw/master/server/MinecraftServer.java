@@ -27,15 +27,15 @@ public class MinecraftServer extends Server implements Runnable{
     @Getter private final Thread thread;
     @Getter private final IConsole console;
 
-    public MinecraftServer(int port, String address, IConsole console) {
-        super(port, address);
+    public MinecraftServer(int port, IConsole console) {
+        super(port);
         this.console = console;
         this.thread = new Thread(this);
     }
 
     @Override
     public void runServer() throws Exception{
-        this.console.writeLine("Running Minecraft Server on " + this.getAddress() + ":" + this.getPort(), MessageType.NORMAL);
+        this.console.writeLine("Running Minecraft Server on port " + this.getPort(), MessageType.NORMAL);
         this.bossGroup = new NioEventLoopGroup();
         this.workerGroup = new NioEventLoopGroup();
         try {

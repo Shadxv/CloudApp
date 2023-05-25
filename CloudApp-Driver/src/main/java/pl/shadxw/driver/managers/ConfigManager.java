@@ -16,26 +16,30 @@ public class ConfigManager extends ConfigFile {
     private final Properties properties = new Properties();
     private FileInputStream fileInputStream;
 
+    @SneakyThrows
     public ConfigManager(String path, boolean canCreateIfNotExists) {
         super(path, canCreateIfNotExists);
         this.finalPath = path + "/" + CONFIG_FILE_NAME;
-        CloudAppDriver.getApp().getConsole().writeLine("Checking configutarion files...", MessageType.NORMAL);
+        CloudAppDriver.getApp().getConsole().writeLine("Checking configuration files...", MessageType.NORMAL);
         try {
             loadPropertiesFile();
         } catch (IOException e) {
             CloudAppDriver.getApp().getConsole().writeLine("Could not find configuration files!", MessageType.WARNING);
             if (super.canCreateIfNotExists()) create();
-            else throw new RuntimeException();
+            else {
+                CloudAppDriver.getApp().getConsole().writeLine("CloudApp could not create files!", MessageType.ERROR);
+                CloudAppDriver.getApp().shutdown(true, true);
+            }
         }
     }
 
     @SneakyThrows
     @Override
-    protected void forceCreate() {
+    protected void forceCreate(String templateFileName) {
         File configFolder = new File(super.getPath());
         if(!configFolder.isDirectory()) configFolder.mkdir();
         try {
-            InputStream templateStream = this.getClass().getClassLoader().getResourceAsStream("template_" + CONFIG_FILE_NAME);
+            InputStream templateStream = this.getClass().getClassLoader().getResourceAsStream(templateFileName);
             File config = new File(this.finalPath);
             config.createNewFile();
             FileOutputStream configStream = new FileOutputStream(config);
@@ -59,8 +63,9 @@ public class ConfigManager extends ConfigFile {
     @Override
     protected void create() {
         CloudAppDriver.getApp().getConsole().write("CloudApp needs to create configuration files. Do you agree to create them there? (Y/n): ", MessageType.NORMAL);
-        String input;
+        String input = null;
         do {
+            if(input != null) CloudAppDriver.getApp().getConsole().write("You entered wrong value. Do you agree to create configuration files there? (Y/n): ", MessageType.NORMAL);
             input = CloudAppDriver.getApp().getConsole().getScanner().nextLine();
         } while (!input.isEmpty()
                 && !input.equalsIgnoreCase(" ")
@@ -70,7 +75,7 @@ public class ConfigManager extends ConfigFile {
             CloudAppDriver.getApp().getConsole().writeLine("Could not create configuration files...", MessageType.WARNING);
             CloudAppDriver.getApp().shutdown(true, true);
         } else {
-            this.forceCreate();
+            this.forceCreate("template_" + CONFIG_FILE_NAME);
         }
     }
 

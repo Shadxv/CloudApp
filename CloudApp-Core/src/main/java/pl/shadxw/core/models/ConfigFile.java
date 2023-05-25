@@ -12,7 +12,7 @@ public abstract class ConfigFile {
         this.canCreateIfNotExists = canCreateIfNotExists;
     }
 
-    protected abstract void forceCreate();
+    protected abstract void forceCreate(String templateFileName);
 
     protected abstract void create();
 
