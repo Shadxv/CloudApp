@@ -3,4 +3,4 @@
 # Master - console app with main server used to connect to the connected minecraft servers
 # Other values will cause error and app will be closed
 # IMPORTANT!!! DO NOT CHANGE THIS VALUE BECAUSE IT MAY CAUSE CONFIG RESET!!!
-cloudapp-type = driver
+cloudapp-type: "driver"

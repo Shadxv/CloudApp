@@ -3,10 +3,10 @@
 # Master - console app with main server used to connect to the connected minecraft servers
 # Other values will cause error and app will be closed
 # IMPORTANT!!! DO NOT CHANGE THIS VALUE BECAUSE IT MAY CAUSE CONFIG RESET!!!
-cloudapp-type = master
+cloudapp-type: "master"
 
 # Master Minecraft Server Settings
-server-port = 25565
+server-port: 25565
 
 # Minecraft Server MOTD Settings
 # To add second line in MOTD use \n at the end of first line (Do not use 'enter' key to make new lines)
@@ -15,7 +15,7 @@ server-port = 25565
 # Same as max-players, you can set specific number of online players
 # To use real numbers of max players and online players use value -1 (Not implemented yet)
 # It is not recommended changing icon-path, it may cause errors. Instead, replace default icon.png with your icon (IMPORTANT: resolution of icon must be 64x64)
-motd = This server is powered by CloudApp made by Shadxw#2137
-max-players = 20
-online = 0
-icon-path = config/icon.png
+motd: "This server is powered by CloudApp made by Shadxw#2137"
+max-players: 20
+online: 0
+icon-path: "config/icon.png"

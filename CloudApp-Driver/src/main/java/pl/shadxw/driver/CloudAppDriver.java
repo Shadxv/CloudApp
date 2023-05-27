@@ -1,11 +1,13 @@
 package pl.shadxw.driver;
 
 import lombok.Getter;
+import lombok.SneakyThrows;
 import pl.shadxw.core.console.IConsole;
 import pl.shadxw.core.console.MessageType;
 import pl.shadxw.core.models.ConsoleApp;
 import pl.shadxw.driver.configuration.DriverConfiguration;
 import pl.shadxw.driver.console.Console;
+import pl.shadxw.driver.managers.SetupManager;
 import pl.shadxw.driver.models.Sender;
 import pl.shadxw.master.CloudAppMaster;
 
@@ -59,7 +61,8 @@ public class CloudAppDriver extends ConsoleApp {
                     app.init();
                 }
                 case DRIVER -> {
-                    //Start Configuration
+                    new SetupManager(super.getConsole(), this.driverConfiguration)
+                            .startSetup();
                 }
                 case UNKNOWN -> {
                     //ERROR, Unknown type
@@ -74,7 +77,8 @@ public class CloudAppDriver extends ConsoleApp {
     }
 
     @Override
-    public void shutdown(boolean force, boolean closeConsole) throws Exception {
+    @SneakyThrows
+    public void shutdown(boolean force, boolean closeConsole) {
         CloudAppDriver.getApp().getConsole().writeLine("Shutting down CloudApp Driver...", MessageType.NORMAL);
         if(force) System.exit(0);
 

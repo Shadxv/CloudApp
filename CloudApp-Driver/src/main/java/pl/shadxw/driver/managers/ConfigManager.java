@@ -1,28 +1,37 @@
 package pl.shadxw.driver.managers;
 
 import lombok.SneakyThrows;
+import org.yaml.snakeyaml.Yaml;
 import pl.shadxw.core.console.MessageType;
 import pl.shadxw.core.models.ConfigFile;
 import pl.shadxw.driver.CloudAppDriver;
 
 import java.io.*;
-import java.util.Properties;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ConfigManager extends ConfigFile {
 
-    private static final String CONFIG_FILE_NAME = "config.properties";
+    private static final String CONFIG_FILE_NAME = "config.yaml";
 
     private final String finalPath;
-    private final Properties properties = new Properties();
-    private FileInputStream fileInputStream;
+    private final String templateName;
+    private final File configFile;
+    private final Yaml configYaml;
+    private Map<String, Object> config;
 
-    @SneakyThrows
-    public ConfigManager(String path, boolean canCreateIfNotExists) {
+    public ConfigManager(String path, String templateName ,boolean canCreateIfNotExists) {
         super(path, canCreateIfNotExists);
+        this.templateName = templateName;
         this.finalPath = path + "/" + CONFIG_FILE_NAME;
         CloudAppDriver.getApp().getConsole().writeLine("Checking configuration files...", MessageType.NORMAL);
+        this.configFile = new File(this.finalPath);
+        this.configYaml = new Yaml();
         try {
-            loadPropertiesFile();
+            loadConfigFile();
         } catch (IOException e) {
             CloudAppDriver.getApp().getConsole().writeLine("Could not find configuration files!", MessageType.WARNING);
             if (super.canCreateIfNotExists()) create();
@@ -35,7 +44,7 @@ public class ConfigManager extends ConfigFile {
 
     @SneakyThrows
     @Override
-    protected void forceCreate(String templateFileName) {
+    public void forceCreate(String templateFileName, boolean load) {
         File configFolder = new File(super.getPath());
         if(!configFolder.isDirectory()) configFolder.mkdir();
         try {
@@ -48,7 +57,7 @@ public class ConfigManager extends ConfigFile {
             templateStream.close();
             configStream.close();
 
-            this.loadPropertiesFile();
+            if(load) this.loadConfigFile();
         } catch (FileNotFoundException e) {
             CloudAppDriver.getApp().getConsole().writeLine("CloudApp could not find '" + CONFIG_FILE_NAME + "' template in resources!", MessageType.ERROR);
             CloudAppDriver.getApp().shutdown(true, true);
@@ -57,6 +66,14 @@ public class ConfigManager extends ConfigFile {
             CloudAppDriver.getApp().shutdown(true, true);
         }
 
+    }
+
+    @Override
+    public void loadConfigFile() throws IOException {
+        CloudAppDriver.getApp().getConsole().writeLine("Loading configuration files...", MessageType.NORMAL);
+        InputStream inputStream = new FileInputStream(configFile);
+        this.config = this.configYaml.load(inputStream);
+        inputStream.close();
     }
 
     @SneakyThrows
@@ -75,40 +92,50 @@ public class ConfigManager extends ConfigFile {
             CloudAppDriver.getApp().getConsole().writeLine("Could not create configuration files...", MessageType.WARNING);
             CloudAppDriver.getApp().shutdown(true, true);
         } else {
-            this.forceCreate("template_" + CONFIG_FILE_NAME);
+            this.forceCreate(this.templateName, true);
         }
     }
 
-    private void loadPropertiesFile() throws IOException {
-        CloudAppDriver.getApp().getConsole().writeLine("Loading configuration files...", MessageType.NORMAL);
-        File configFile = new File(this.finalPath);
-        this.fileInputStream = new FileInputStream(configFile);
-        this.properties.load(fileInputStream);
-    }
-
     @Override
-    public String readValue(String key) {
-        if(this.exists(key)) return this.properties.getProperty(key);
+    public Object readValue(String key) {
+        if(this.exists(key)) return this.config.get(key);
         return null;
     }
 
     @Override
-    public void write(String key, String value) {
+    public void updateValue(String key, Object value) throws IOException {
+        if(this.exists(key)){
+            this.config.put(key, value);
+            List<String> lines = new ArrayList<>();
+            BufferedReader reader = new BufferedReader(new FileReader(configFile));
 
-    }
+            String line;
+            while ((line = reader.readLine()) != null){
+                String[] components = line.split(": ");
+                if(components.length != 0) {
+                    if (this.config.containsKey(components[0]) && components[0].equalsIgnoreCase(key)) {
+                        if(value instanceof String) lines.add(components[0] + ": \"" + value + "\"");
+                        else lines.add(components[0] + ": " + value);
+                    } else {
+                        lines.add(line);
+                    }
+                } else {
+                    lines.add(line);
+                }
 
-    @Override
-    public void updateValue(String key, String value) {
+            }
+            reader.close();
 
-    }
-
-    @Override
-    public void remove(String key) {
-
+            BufferedWriter writer = new BufferedWriter(new FileWriter(configFile));
+            for(String s : lines) {
+                writer.write(s + "\n");
+            }
+            writer.close();
+        }
     }
 
     @Override
     public boolean exists(String key) {
-        return this.properties.containsKey(key);
+        return this.config.containsKey(key);
     }
 }
