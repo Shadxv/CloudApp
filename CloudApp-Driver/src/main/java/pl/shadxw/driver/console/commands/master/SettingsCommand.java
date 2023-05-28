@@ -67,6 +67,11 @@ public class SettingsCommand extends Command {
                     } catch (IllegalAccessException | IOException e) {
                         CloudAppDriver.getApp().getConsole().writeLine("An error occurred while loading configuration!\n" + e.getMessage(), MessageType.ERROR);
                     }
+                } else {
+                    CloudAppDriver.getApp().getConsole().writeLine("Usage of 'settings' command:", MessageType.SUGGESTION);
+                    CloudAppDriver.getApp().getConsole().writeLine("- settings list - showing list of settings with their current values", MessageType.SUGGESTION);
+                    CloudAppDriver.getApp().getConsole().writeLine("- settings set <name> <value> - changing settings values", MessageType.SUGGESTION);
+                    CloudAppDriver.getApp().getConsole().writeLine("- settings reload - reloading configuration files", MessageType.SUGGESTION);
                 }
             } else if(args.size() == 3){
                 if(args.get(0).equalsIgnoreCase("set")){
@@ -79,7 +84,7 @@ public class SettingsCommand extends Command {
                             CloudAppDriver.getApp().getConsole().writeLine("An error occurred while updating value!\n" + e.getMessage(), MessageType.ERROR);
                         }
                     } else {
-                        CloudAppDriver.getApp().getConsole().writeLine("Cloud not find option called '" + args.get(2) + "'!", MessageType.WARNING);
+                        CloudAppDriver.getApp().getConsole().writeLine("Cloud not find option called '" + args.get(1) + "'!", MessageType.WARNING);
                     }
                 } else {
                     CloudAppDriver.getApp().getConsole().writeLine("Usage of 'settings' command:", MessageType.SUGGESTION);
