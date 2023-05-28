@@ -5,14 +5,16 @@ import pl.shadxw.driver.managers.CommandManager;
 import pl.shadxw.driver.models.Command;
 import pl.shadxw.core.console.MessageType;
 
+import java.util.List;
+
 public class PongCommand extends Command {
 
-    public PongCommand(String name, CommandManager manager) {
-        super(name, manager);
+    public PongCommand(String name, List<String> aliases, CommandManager manager) {
+        super(name, aliases, manager);
     }
 
     @Override
-    public boolean execute(Console console) {
+    public boolean execute(Console console, List<String> args) {
         console.writeLine("Pong", MessageType.NORMAL);
         return false;
     }

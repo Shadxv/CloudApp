@@ -52,7 +52,7 @@ public class ConsoleReader extends Thread {
                 elements.remove(0);
                 //At this point elements contains only arguments!!!
                 try{
-                    commandManager.getCommand(command).execute(this.getConsole());
+                    commandManager.getCommand(command.toLowerCase()).execute(this.getConsole(), elements);
                 } catch (CommandNotFoundException e){
                     this.getConsole().writeLine(e.getMessage(), MessageType.WARNING);
                 }

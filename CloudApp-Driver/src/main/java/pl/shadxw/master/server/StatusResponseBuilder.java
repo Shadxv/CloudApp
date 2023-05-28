@@ -44,7 +44,7 @@ public class StatusResponseBuilder {
                         .put("online", this.onlinePlayers)
                         .put("sample", new JSONArray()))
                 .put("description", new JSONObject()
-                        .put("text", this.motd))
+                        .put("text", this.motd.replace("&", "\u00a7")))
                 .put("favicon", "data:image/png;base64," + this.base64Icon)
                 .toString();
     }

@@ -1,5 +1,6 @@
 package pl.shadxw.master.server;
 
+import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -10,13 +11,18 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import lombok.Getter;
+import lombok.Setter;
 import pl.shadxw.api.protocol.PacketEncoder;
 import pl.shadxw.core.console.IConsole;
 import pl.shadxw.core.console.MessageType;
 import pl.shadxw.core.server.Server;
+import pl.shadxw.driver.CloudAppDriver;
+import pl.shadxw.master.configuration.MasterConfiguration;
 import pl.shadxw.master.network.NetworkManager;
 import pl.shadxw.master.protocol.MasterPacketDecoder;
 import pl.shadxw.master.server.listeners.HandshakeListener;
+
+import java.io.IOException;
 
 public class MinecraftServer extends Server implements Runnable{
 
@@ -26,11 +32,26 @@ public class MinecraftServer extends Server implements Runnable{
 
     @Getter private final Thread thread;
     @Getter private final IConsole console;
+    @Getter private final MasterConfiguration configuration;
+    @Getter @Setter
+    private StatusResponseBuilder statusResponseBuilder;
 
-    public MinecraftServer(int port, IConsole console) {
-        super(port);
+    public MinecraftServer(MasterConfiguration configuration, IConsole console) {
+        super(configuration.getServerPort());
         this.console = console;
+        this.configuration = configuration;
         this.thread = new Thread(this);
+        try {
+            this.statusResponseBuilder = new StatusResponseBuilder(
+                    this.configuration.getMaxPlayers(),
+                    this.configuration.getOnline(),
+                    this.configuration.getMotd(),
+                    this.configuration.getIconPath()
+            );
+        } catch (IOException e){
+            this.getConsole().writeLine(e.getMessage(), MessageType.ERROR);
+            CloudAppDriver.getApp().shutdown(true, true);
+        }
     }
 
     @Override
@@ -73,7 +94,6 @@ public class MinecraftServer extends Server implements Runnable{
         this.console.writeLine("Stopping Minecraft Server...", MessageType.NORMAL);
         this.workerGroup.shutdownGracefully().sync();
         this.bossGroup.shutdownGracefully().sync();
-        this.channelFuture.channel().closeFuture().sync();
         this.console.writeLine("Minecraft Server has been stopped correctly!", MessageType.NORMAL);
     }
 

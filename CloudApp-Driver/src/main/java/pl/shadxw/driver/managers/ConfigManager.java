@@ -8,6 +8,7 @@ import pl.shadxw.driver.CloudAppDriver;
 
 import java.io.*;
 import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -114,8 +115,11 @@ public class ConfigManager extends ConfigFile {
                 String[] components = line.split(": ");
                 if(components.length != 0) {
                     if (this.config.containsKey(components[0]) && components[0].equalsIgnoreCase(key)) {
-                        if(value instanceof String) lines.add(components[0] + ": \"" + value + "\"");
-                        else lines.add(components[0] + ": " + value);
+                        try {
+                            lines.add(components[0] + ": " + Integer.parseInt(value.toString()));
+                        } catch (NumberFormatException e){
+                            lines.add(components[0] + ": \"" + value + "\"");
+                        }
                     } else {
                         lines.add(line);
                     }
@@ -128,6 +132,7 @@ public class ConfigManager extends ConfigFile {
 
             BufferedWriter writer = new BufferedWriter(new FileWriter(configFile));
             for(String s : lines) {
+                s = s.replace("\n", "\\n");
                 writer.write(s + "\n");
             }
             writer.close();
@@ -136,6 +141,6 @@ public class ConfigManager extends ConfigFile {
 
     @Override
     public boolean exists(String key) {
-        return this.config.containsKey(key);
+        return this.config != null && this.config.containsKey(key);
     }
 }

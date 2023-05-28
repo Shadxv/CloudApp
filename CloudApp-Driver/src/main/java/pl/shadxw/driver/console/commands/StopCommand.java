@@ -5,14 +5,16 @@ import pl.shadxw.driver.console.Console;
 import pl.shadxw.driver.managers.CommandManager;
 import pl.shadxw.driver.models.Command;
 
+import java.util.List;
+
 public class StopCommand extends Command {
 
-    public StopCommand(String name, CommandManager manager) {
-        super(name, manager);
+    public StopCommand(String name, List<String> aliases, CommandManager manager) {
+        super(name, aliases, manager);
     }
 
     @Override
-    public boolean execute(Console console) {
+    public boolean execute(Console console, List<String> args) {
         try {
             CloudAppDriver.getApp().shutdown(false, true);
         } catch (Exception e) {

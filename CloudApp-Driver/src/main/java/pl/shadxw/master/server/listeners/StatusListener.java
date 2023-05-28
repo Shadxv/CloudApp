@@ -45,7 +45,7 @@ public class StatusListener implements PacketStatusInListener {
             ).buildServerPingResponse();*/
             try{
                 this.networkManager.sendPacket(new PacketStatusOutInfo(
-                        ((CloudAppMaster)CloudAppDriver.getApp()).getStatusResponseBuilder()
+                        ((CloudAppMaster)CloudAppDriver.getApp()).getMinecraftServer().getStatusResponseBuilder()
                                 .build(this.networkManager.getProtocolVersion())));
             } catch (JSONException e){
                 CloudAppDriver.getApp().getConsole().writeLine(e.getMessage(), MessageType.ERROR);

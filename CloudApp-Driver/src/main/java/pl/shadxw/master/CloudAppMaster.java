@@ -1,9 +1,14 @@
 package pl.shadxw.master;
 
 import lombok.Getter;
+import lombok.Setter;
 import lombok.SneakyThrows;
 import pl.shadxw.core.console.MessageType;
 import pl.shadxw.driver.CloudAppDriver;
+import pl.shadxw.driver.console.Console;
+import pl.shadxw.driver.console.commands.master.ServerCommand;
+import pl.shadxw.driver.console.commands.master.SettingsCommand;
+import pl.shadxw.driver.managers.CommandManager;
 import pl.shadxw.master.configuration.MasterConfiguration;
 import pl.shadxw.master.server.MinecraftServer;
 import pl.shadxw.core.console.IConsole;
@@ -11,13 +16,13 @@ import pl.shadxw.core.models.ConsoleApp;
 import pl.shadxw.master.server.StatusResponseBuilder;
 
 import java.io.IOException;
+import java.util.List;
 
 public class CloudAppMaster extends ConsoleApp {
 
-    @Getter private MinecraftServer minecraftServer;
+    @Getter @Setter
+    private MinecraftServer minecraftServer;
     @Getter private MasterConfiguration masterConfiguration;
-
-    @Getter private StatusResponseBuilder statusResponseBuilder;
 
     public CloudAppMaster(IConsole console) {
         super(console);
@@ -38,19 +43,15 @@ public class CloudAppMaster extends ConsoleApp {
             super.getConsole().writeLine("Configuration file could not have been loaded! If this problem still occurs, contact with CloudApp developer.", MessageType.ERROR);
             this.shutdown(true, true);
         }
-        try {
-            this.statusResponseBuilder = new StatusResponseBuilder(
-                    this.masterConfiguration.getMaxPlayers(),
-                    this.masterConfiguration.getOnline(),
-                    this.masterConfiguration.getMotd(),
-                    this.masterConfiguration.getIconPath()
-            );
-        } catch (IOException e){
-            this.getConsole().writeLine(e.getMessage(), MessageType.ERROR);
-            this.shutdown(true, true);
-        }
-        this.minecraftServer = new MinecraftServer(this.masterConfiguration.getServerPort(), super.getConsole());
+        this.minecraftServer = new MinecraftServer(this.masterConfiguration, super.getConsole());
         this.minecraftServer.getThread().start();
+        registerMasterCommands();
+    }
+
+    private void registerMasterCommands(){
+        CommandManager commandManager = ((Console)this.getConsole()).getConsoleReader().getCommandManager();
+        new ServerCommand("server", List.of("serv"), commandManager);
+        new SettingsCommand("settings", null, commandManager);
     }
 
     @Override

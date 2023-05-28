@@ -10,7 +10,7 @@ server-port: 25565
 
 # Minecraft Server MOTD Settings
 # To add second line in MOTD use \n at the end of first line (Do not use 'enter' key to make new lines)
-# It is recommended using websites like https://minecraft.tools/en/motd.php to generate MOTD
+# It is recommended using websites like https://mctools.org/motd-creator to generate MOTD (To use color code use '&')
 # Set your own number of max players that will be shown on servers list (This setting does not affect on number of max players on server)
 # Same as max-players, you can set specific number of online players
 # To use real numbers of max players and online players use value -1 (Not implemented yet)
