@@ -5,20 +5,23 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.Getter;
 import lombok.Setter;
+import pl.shadxw.api.util.JSONChat;
 import pl.shadxw.core.console.MessageType;
 import pl.shadxw.core.network.PacketListener;
 import pl.shadxw.core.protocol.Packet;
 import pl.shadxw.driver.CloudAppDriver;
+import pl.shadxw.master.protocol.ClientState;
+import pl.shadxw.master.protocol.login.PacketLoginOutDisconnect;
 
 public class NetworkManager extends SimpleChannelInboundHandler<Packet<?>> {
 
-    @Getter @Setter private boolean recivedHandshake;
     @Getter @Setter private PacketListener packetListener;
     @Getter private Channel channel;
     @Getter @Setter private int protocolVersion;
+    @Getter @Setter private ClientState clientState;
 
     public NetworkManager(){
-        this.recivedHandshake = false;
+        this.clientState = ClientState.HANDSHAKE;
     }
 
     public void channelActive(ChannelHandlerContext ctx){
@@ -41,6 +44,7 @@ public class NetworkManager extends SimpleChannelInboundHandler<Packet<?>> {
     @Override
     public void exceptionCaught(ChannelHandlerContext channelhandlercontext, Throwable throwable) {
         CloudAppDriver.getApp().getConsole().writeLine(throwable.getMessage(), MessageType.ERROR);
+        throwable.printStackTrace();
     }
 
     public void sendPacket(Packet<?> packet) {
@@ -49,8 +53,9 @@ public class NetworkManager extends SimpleChannelInboundHandler<Packet<?>> {
         }
     }
 
-    public void disconnect() {
+    public void disconnect(String reason) {
         if (this.channel.isOpen()) {
+            this.sendPacket(new PacketLoginOutDisconnect(reason));
             this.channel.close().awaitUninterruptibly();
         }
     }

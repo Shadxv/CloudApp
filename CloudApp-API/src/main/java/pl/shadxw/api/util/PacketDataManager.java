@@ -15,6 +15,7 @@ import java.nio.channels.GatheringByteChannel;
 import java.nio.channels.ScatteringByteChannel;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.UUID;
 
 public class PacketDataManager {
 
@@ -516,6 +517,12 @@ public class PacketDataManager {
 
     public long readLongLE() {
         return this.source.readLongLE();
+    }
+
+    public UUID readUUID() {
+        long mostSignificantBits = this.source.readLong();
+        long leastSignificantBits = this.source.readLong();
+        return new UUID(mostSignificantBits, leastSignificantBits);
     }
 
     public char readChar() {

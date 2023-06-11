@@ -7,7 +7,6 @@ public class IncorrectValueException extends RuntimeException{
 
     public IncorrectValueException(String msg){
         super(msg);
-        CloudAppDriver.getApp().getConsole().writeLine(msg, MessageType.ERROR);
     }
 
 }
